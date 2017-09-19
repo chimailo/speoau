@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {% load static %}
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %} speoau | home {% endblock %}</title>
+  
+  <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+  <!-- offline bootstrap -->
+  <link href="{% static 'css/bootstrap.min.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <!-- Custom css -->
+  <link rel="stylesheet" type="text/css" href="{% block base %}{% static 'css/base.css' %}{% endblock %}" >
+  <link rel="stylesheet" type="text/css" href="{% block custom %} {% endblock %}" >
+</head>
+<body>
+  <!--              Navbar 
+  ================================================== 
+  -->
+  {% block navbar %}
+  <div class="container navbar-container">
+  <nav class="navbar navbar-inverse navbar-static-top">
+    <div class="container">
+
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#"><img src="{% static 'img/logo.png' %}"></a>
+        <div class="chapter">
+          <p class="chem">SPEOAU Student Chapter</p>
+          <p class="oau">Obafemi Awolowo University</p>
+        </div>
+      </div>
+
+      <div id="myNavbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">Home</a></li>
+          <li><a href="{% url 'posts:all_event' %}">Events</a></li>
+          <li><a href="#">Gallery</a></li>
+          <li><a href="#resources">SPE Resources</a></li>
+          <li><a href="{% url 'register:register' %}">Register</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  </div>
+  {% endblock %}
+
+  <div class="container container-wrapper">
+    {% block banner %}
+    <div class="banner">
+      <div class="jumbotron spe-img">
+        <img src="{% static 'img/speoau.jpg' %}">
+      </div>
+    </div>
+    {% endblock %}
+
+    <!--              Main Content 
+    ================================================== 
+    -->
+    <div class="row">
+      <div class="col-sm-12 col-md-3">
+        {% block welcome %}
+        <div class="tile-body" style="height:500px; margin-bottom:30px">
+          <div class="title-tile">
+            <h3 class="tile-header">Welcome</h3>
+          </div>
+          <img class="img-tile" src="{% static 'img/president.jpg' %}" alt="President's image" style="height:150px;">
+          <h3 class="tile-caption text-center">Welcome Note</h3> 
+          <p class="tile-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <p><a class="btn btn-default button tile-text" style="background-color:#3aa7a7" href="#" role="button">Continue &raquo;</a></p>
+        </div>
+        {% endblock %}
+        
+        {% block join-spe %}
+        <div class="tile-body" style="height:500px;">
+          <div class="title-tile">
+            <a href="{% url 'register:register' %}"><h3 class="tile-header" style="background-color:#102c4e;">JOIN SPE</h3></a>
+          </div>
+          <img class="img-tile" src="{% static 'img/speoau.jpg' %}" alt="speoau image" style="height:150px;">
+          <a href="{% url 'register:register' %}"><h3 class="tile-caption text-center">Why SPEOAU?</h3></a>
+          <p class="tile-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <p><a class="btn btn-default button tile-text" style="background-color:#102c4e; margin-bottom:20px;" href="#" role="button">Continue &raquo;</a></p>
+          {% endblock %}
+        </div>
+      </div>
+
+      {% block events %}{% endblock %}
+
+      {% block forms %}{% endblock %}
+
+      {% block oil-watch %}
+      <div class="col-sm-12 col-md-3 tile-body" style="margin-bottom:30px">
+        <div class="title-tile">
+          <h3 class="tile-header" style="background-color:#b90a0a">Oil Watch</h3>
+        </div>
+        <div style="padding:35px">
+          <script type="text/javascript" src="https://www.oil-price.net/TABLE2/gen.php?lang=en"></script>
+          <div class="padding"></div>
+          <script type="text/javascript" src="https://www.oil-price.net/widgets/brent_crude_price_large/gen.php?lang=en"></script>
+        </div>
+      </div>
+      {% endblock %}
+
+      {% block resources %}
+      <div class="col-sm-12 col-md-9 tile-body" style="margin-bottom:30px">
+        <div class="title-tile">
+          <h3 class="tile-header">SPE Resources</h3>
+        </div>
+        <div class="col-sm- col-md-4">
+          <div class="padding"></div>
+          <div class="resource">
+            <a href="https://www.onepetro.org/?_ga=2.46572967.1262995201.1503744350-4158818.1502218306">
+            <div class="img">
+              <img src="{% static 'img/one-petro-logo.jpg' %}" alt="one-petro-logo" width="100">
+            </div>
+              <h4 class="tile-caption text-center">Online Paper Library</h4>
+            </a>
+          </div>
+
+          <div class="padding">
+            <div class="resource">
+              <a href="http://petrowiki.org/PetroWiki">
+              <div class="img">
+                <img src="{% static 'img/Petrowiki_logo.png' %}" alt="Petrowiki-logo" width="100">
+              </div>
+                <h4 class="tile-caption text-center">Wikipedia for Exploration & Production Industry</h4>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4">
+          <div class="padding"></div>
+          <div class="resource">
+            <a href="http://www.energy4me.org">
+            <div class="img">
+              <img src="{% static 'img/e4m.jpg' %}" alt="Energy4me-logo" width="100">
+            </div>
+              <h4 class="tile-caption text-center">E & P classroom Education</h4>
+            </a>
+          </div>
+
+          <div class="padding">
+            <div class="resource">
+              <a href="http://www.spe.org/jpt/">
+              <div class="img">
+                <img src="{% static 'img/jpt.png' %}" alt="jpt-logo" width="100">
+              </div>
+                <h4 class="tile-caption text-center">journal of petroluem technology</h4>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4">
+          <div class="padding"></div>
+          <div class="resource">
+            <a href="http://www.spe.org/hsenow/">
+            <div class="img">
+              <img src="{% static 'img/hsenow.png' %}" alt="HSE-Now-logo" width="100">
+            </div>
+              <h4 class="tile-caption text-center">A digital paper for HSSE-SR</h4>
+            </a>
+          </div>
+
+          <div class="padding">
+            <div class="resource">
+              <a href="https://webevents.spe.org/">
+              <div class="img">
+                <img src="{% static 'img/spe-connect.png' %}" alt="spe-connect" width="100">
+              </div>
+                <h4 class="tile-caption text-center">networking and discussion platform</h4>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endblock %}
+    </div>
+
+    <!--              Vision 
+    ================================================== 
+    -->
+    {% block vision %}
+    <div class="row">
+      <div class="container tile-body container-wrapper">
+        <h3 class="tile-header text-center">Vision</h3>
+        <p class="vision-text text-center">SPEOAU Student Chapter aims at providing each affiliate with opportunities for personal and professional development through an amalgamation of events round the year including Distinguished Lectures, Workshops, Soft Skill Development Seminars and a plethora of contests. We strive to provide each and every student member a common platform to showcase their acumen in front of eminent industry veterans and compete with peers. The learning programs are aimed at making student members well acquainted with Reservoir, Production and Drilling Engineering and also get familiar with Health, Safety and Environmental factors of Oil and Gas industry. It also focuses on unconventional energy sources.</p>
+      </div>
+    </div>
+    {% endblock %}
+    <!--              Gallery 
+    ================================================== 
+    -->
+    {% block gallery %}
+    <div class="row">
+      <div class="jumbotron">
+        {% for image in gallery %}{% endfor %}
+      </div>
+    </div>
+    {% endblock %}
+    <!--              Exco's 
+    ================================================== 
+    -->
+    <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+      <p>&copy; 2016 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    </footer>
+
+  </div>
+
+  <script type="text/javascript" src="{% block jqeury %}{% static 'js/jquery.min.js' %}{% endblock %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script type="text/javascript" src="{% block js %}{% static 'js/base.js' %}{% endblock %}"></script>
+
+</body>
+</html>

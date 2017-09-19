@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} speoau | register {% endblock %}
+
+{% block custom %}{% static 'css/register.css' %}{% endblock %}
+
+
+{% block banner %}{% endblock %}
+
+{% block left-side %} {% endblock %}
+
+	
+{% block forms %}
+
+	<h1 class="form-header text-center">Registration Form</h1>
+
+	<form method="POST" action="">{% csrf_token %}
+		<div class="input-group  input-group-lg">
+  	<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  	{{ form.fullname.errors }}
+	  	{{ form.fullname }}
+		  {% if form.help_text %}
+				<p class="help">{{ form.help_text|safe }}</p>
+		  {% endif %}
+		</div>
+
+		<div class="input-group  input-group-lg">
+  	<span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+  	{{ form.phone.errors }}
+	  	{{ form.phone }}
+		  {% if form.help_text %}
+				<p class="help">{{ form.help_text|safe }}</p>
+		  {% endif %}
+		</div>
+		<div class="input-group  input-group-lg">
+		<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+  	{{ form.email.errors }}
+	  	{{ form.email }}
+		  {% if form.help_text %}
+				<p class="help">{{ form.help_text|safe }}</p>
+		  {% endif %}
+		</div>
+		<div class="input-group  input-group-lg">
+		<span class="input-group-addon">Department</span>
+  	{{ form.dept.errors }}
+	  	{{ form.dept }}
+		  {% if form.help_text %}
+				<p class="help">{{ form.help_text|safe }}</p>
+		  {% endif %}
+		</div>
+		<div class="input-group  input-group-lg">
+		<span class="input-group-addon">Sex</span>
+  	{{ form.gender.errors }}
+	  	{{ form.gender }}
+		  {% if form.help_text %}
+				<p class="help">{{ form.help_text|safe }}</p>
+		  {% endif %}
+		</div>
+		<div class="input-group  input-group-lg">
+		<span class="input-group-addon">Level:</span>
+  	{{ form.level.errors }}
+	  	{{ form.level }}
+		  {% if form.help_text %}
+				<p class="help">{{ form.help_text|safe }}</p>
+		  {% endif %}
+		</div>
+
+		<div class="bttn">
+			<button type="submit" class="btn btn-lg btn-block">Submit</button>				
+		</div>
+	</form>
+
+{% endblock %}
+
+
+{% block welcome %}{% endblock %}
+  
+{% block resources %}{% endblock %}
+
+{% block gallery %}{% endblock %}
+
+{% block vision %}{% endblock %}
+

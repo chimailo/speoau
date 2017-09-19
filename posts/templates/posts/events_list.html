@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} events | speoau {% endblock %}
+
+{% block custom %}{% static 'css/events.css' %}{% endblock %}
+
+
+{% block banner %}{% endblock %}
+
+{% block welcome %}{% endblock %}
+
+{% block events %}
+  <div class="col-s12 col-md-9" style="padding-left:0; padding-right:0;">
+  <div class="title-tile">
+    <h3 class="tile-header">Upcoming Events</h3>
+  </div>
+  {% for event in events %}
+  <div class="header" style="padding: 0 20px;">
+  	{% if user.is_authenticated %}
+      {% if not event.post_date %}
+  		  <ul>
+  	      <li style="display:inline; float:right;"><a href="{% url 'posts:event_delete' event.pk %}" class="btn" data-toggle="tooltip" data-placement="bottom" title="Delete"><i style="font-size:20px" class="glyphicon glyphicon-trash"></i></a></li>
+  	      <li style="display:inline; float:right;"><a href="{% url 'posts:publish_event' event.pk %}" class="btn" data-toggle="tooltip" data-placement="bottom" title="Publish"><i style="font-size:20px" class="glyphicon glyphicon-share"></i></a></li>
+  	    </ul>
+      {% endif %}
+    {% endif %}
+    <h4 class="tile-caption"><a href="{% url 'posts:event_detail' event.pk %}">{{ event.event|upper }}</a></h4>
+  </div>
+  <div class="events-body" style="padding: 0 20px;">
+    <p class="event-date"><strong>Date of Event: {{event.event_date}}</strong></p>
+    <p class="tile-text">{{ event.summary }}</p>
+  </div>
+
+  {% empty %}
+  <p class="empty">There are no posts available yet</p>
+  {% endfor %}
+  </div>
+{% endblock %}
+
+	
+{% block oil-watch %}{% endblock %}
+
+{% block resources %}{% endblock %}
+
+{% block gallery %}{% endblock %}
+
+{% block vision %}{% endblock %}

@@ -1,0 +1,9 @@
+*.pyc
+*~
+__pycache__
+db.sqlite3
+/static
+.DS_Store
+runtime.txt
+procfile
+requirements.txt

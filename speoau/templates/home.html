@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block events %}
+	<div class="col-sm-12 col-md-6">
+		<a href="{% url 'posts:all_event' %}">
+			<div class="title-tile">
+			  <h3 class="tile-header" style="background-color: #102c4e">Upcoming Events</h3>
+			</div>
+		</a>
+		<div class="events-body" style="padding: 0 20px;">
+		{% for event in events %}
+		  <h4 class="tile-caption"><a href="{% url 'posts:event_detail' event.pk %}">{{ event.event }}</a></h4>
+		  <p class="event-date"><strong>Date:{{event.event_date}}</strong></p>
+		  <p class="tile-text">{{event.summary}}</p>
+		{% endfor %}
+		</div>
+	</div>
+{% endblock %}  
